@@ -21,6 +21,13 @@ LINGUAGEM DE PROGRAMAÇÃO C
 16) Utilizo o resto (%) para limitar o intervalo de um número randômico. 
 17) time(0) => número de segundos passados desde 1970. Utilizar para alternar os números de 18*.
 18) srand()* => utilizado como passador de "semente" para a função rand alterar o seu valor
-19)
-20) 
+==========================================================================================================================================
+LINGUAGEM C AVANÇADO
+================================================================================================================================================
+1) arrays => char nome_da_variavel[50];
+2) sprintf(), análoga a printf é a que nos ajuda a escrever palavras dentro de arrays de char.
+    2.1) sprintf(nome_da_variavel, "MELANCIA"); printf("%s", nome_da_variavel);
+3) strlen() => tamanho de posições od array;
+4) scanf(" %c") => dei o espaço para ignorar o enter na hora da impressão
+
 */
