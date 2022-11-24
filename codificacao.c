@@ -4,8 +4,7 @@
 #include <time.h>
 #include <string.h>
 
-int main ()
-{
+
     /* Bloco que configura o idioma e plota o cabeçalho
     setlocale(LC_ALL,"Portuguese_brasil"); // Rodar no terminal o seguinte código -> chcp 65001
     printf("==============================================\n");
@@ -121,42 +120,74 @@ int main ()
 //============================================================================================
 // JOGO DA FORCA
 
-    char palavrasecreta[20];
+char palavrasecreta[20];
+char chutes[26];
+int tentativas = 0;
+
+void abertura() {
+    printf("/****************/\n");
+    printf("/ Jogo de Forca */\n");
+    printf("/****************/\n\n");
+}
+
+void chuta() {
+    char chute;
+    printf("Qual letra? ");
+    scanf(" %c", &chute);
+
+    chutes[tentativas] = chute;
+}
+
+// Essa função não foi discutida no último vídeo
+int jachutou(char letra) {
+    int achou = 0;
+    for(int j = 0; j < tentativas; j++) {
+        if(chutes[j] == letra) {
+            achou = 1;
+            break;
+        }
+    }
+
+    return achou;
+}
+
+// Essa função não foi discutida no último vídeo
+void desenhaforca() {
+
+    printf("Você já deu %d chutes\n", tentativas);
+
+    for(int i = 0; i < strlen(palavrasecreta); i++) {
+
+        if(jachutou(palavrasecreta[i])) {
+            printf("%c ", palavrasecreta[i]);
+        } else {
+            printf("_ ");
+        }
+
+    }
+    printf("\n");
+
+}
+
+// Essa função não foi discutida no último vídeo
+void escolhepalavra() {
     sprintf(palavrasecreta, "MELANCIA");
+}
+
+int main() {
 
     int acertou = 0;
     int enforcou = 0;
 
-    char chutes[26];
-    int tentativas = 0;
+    abertura();
+    escolhepalavra();
 
     do {
 
-        for(int i = 0; i < strlen(palavrasecreta); i++) {
-            int achou = 0;
+        desenhaforca();
+        chuta();
 
-            for(int j = 0; j < tentativas; j++) {
-                if(chutes[j] == palavrasecreta[i]) {
-                    achou = 1;
-                    break;
-                }
-            }
-
-            if(achou) {
-                printf("%c ", palavrasecreta[i]);
-            } else {
-                printf("_ ");
-            }
-        }
-        printf("\n");
-
-        char chute;
-        printf("Qual letra? ");
-        scanf(" %c", &chute);
-
-        chutes[tentativas] = chute;
         tentativas++;
-
 
     } while (!acertou && !enforcou);
 
